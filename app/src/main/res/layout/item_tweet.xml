@@ -50,4 +50,41 @@
         android:text="TextView"
         android:textSize="12sp" />
 
+    <TextView
+        android:id="@+id/retweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/tvBody"
+        android:layout_toEndOf="@+id/ivRetweets"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/ivRetweets"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+
+
+        android:layout_alignStart="@+id/tvBody"
+        android:layout_below="@+id/tvBody"
+        app:srcCompat="@drawable/ic_vector_retweet" />
+
+    <TextView
+        android:id="@+id/likes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignTop="@+id/retweet"
+        android:layout_toEndOf="@+id/ivLikes"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/ivLikes"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+
+        android:layout_alignTop="@+id/retweet"
+        android:layout_toEndOf="@+id/retweet"
+        app:srcCompat="@drawable/ic_vector_heart_stroke" />
+
 </RelativeLayout>

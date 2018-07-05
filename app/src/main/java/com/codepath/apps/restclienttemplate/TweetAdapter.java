@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+
+import org.parceler.Parcels;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -54,6 +57,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
         holder.timeStamp.setText(getRelativeTimeAgo(tweet.createdAt));
         holder.handle.setText("@"+tweet.handle);
+        holder.likes.setText(tweet.likes);
+        holder.retweets.setText(tweet.retweets);
         GlideApp.with(context).load(tweet.user.profileImageUrl).transform(new RoundedCorners(70))
                 .into(holder.ivProfileImage);
     }
@@ -66,13 +71,14 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
     // create ViewHolder class
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView ivProfileImage;
         public TextView tvUsername;
         public TextView tvBody;
         public TextView timeStamp;
         public TextView handle;
-
+        public TextView likes;
+        public TextView retweets;
 
         public ViewHolder (View itemView){
             super(itemView);
@@ -86,7 +92,30 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             timeStamp= (TextView)itemView.findViewById(R.id.tvTimeStamp);
 
             handle= (TextView)itemView.findViewById(R.id.userName);
+            likes= (TextView)itemView.findViewById(R.id.likes);
+            retweets= (TextView)itemView.findViewById(R.id.retweet);
+            itemView.setOnClickListener(this);
         }
+
+
+        @Override
+        public void onClick(View view) {
+            // gets item position
+            int position = getAdapterPosition();
+            // make sure the position is valid, i.e. actually exists in the view
+            if (position != RecyclerView.NO_POSITION) {
+                // get the movie at the position, this won't work if the class is static
+                Tweet tweet = mTweets.get(position);
+                // create intent for the new activity
+                Intent intent = new Intent(context, DetailsActivity.class);
+                // serialize the movie using parceler, use its short name as a key
+                intent.putExtra("tweet", Parcels.wrap(tweet));
+                context.startActivity(intent);
+            }
+        }
+
+
+
     }
 
 
@@ -100,11 +129,26 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         try {
             long dateMillis = sf.parse(rawJsonDate).getTime();
             relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
-                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE).toString();
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return relativeDate;
+    }
+
+    /* Within the RecyclerView.Adapter class */
+
+    // Clean all elements of the recycler
+    public void clear() {
+        mTweets.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<Tweet> list) {
+        mTweets.addAll(list);
+        notifyDataSetChanged();
     }
 
 
