@@ -54,7 +54,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
         holder.timeStamp.setText(getRelativeTimeAgo(tweet.createdAt));
         holder.handle.setText("@"+tweet.handle);
-        GlideApp.with(context).load(tweet.user.profileImageUrl).transform(new RoundedCorners(30))
+        GlideApp.with(context).load(tweet.user.profileImageUrl).transform(new RoundedCorners(70))
                 .into(holder.ivProfileImage);
     }
 

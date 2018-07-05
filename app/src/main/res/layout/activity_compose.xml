@@ -21,11 +21,9 @@
         android:layout_above="@+id/sendTweet"
         android:layout_centerHorizontal="true"
         android:background="@null"
-        android:maxLength="140"
+        android:maxLength="280"
         tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="16dp"
-
-        />
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/count"
@@ -33,7 +31,7 @@
         android:layout_height="37dp"
         android:layout_alignEnd="@+id/tweetText"
         android:layout_centerVertical="true"
-        android:text="0 / 140 characters" />
+        android:text="0 / 280 characters" />
 
     <Button
         android:id="@+id/exit"
