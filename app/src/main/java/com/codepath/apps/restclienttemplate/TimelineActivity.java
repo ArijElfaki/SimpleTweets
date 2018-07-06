@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -26,8 +27,6 @@ public class TimelineActivity extends AppCompatActivity {
 
     private TwitterClient client;
     private SwipeRefreshLayout swipeContainer;
-
-
     TweetAdapter tweetAdapter;
     ArrayList<Tweet> tweets;
     RecyclerView rvTweets;
@@ -64,7 +63,16 @@ public class TimelineActivity extends AppCompatActivity {
         //init the arrayList (data source)
         tweets=new ArrayList<>();
         // construct the adapter from this datasource
-        tweetAdapter = new TweetAdapter(tweets);
+        tweetAdapter = new TweetAdapter(tweets, new TweetAdapter.handleTweets() {
+            @Override
+            public void onItemClicked(Tweet tweet, Context context) {
+                Intent intent = new Intent(context, DetailsActivity.class);
+                // serialize the movie using parceler, use its short name as a key
+                intent.putExtra("tweet", Parcels.wrap(tweet));
+                startActivityForResult(intent, 20);
+            }
+        });
+
         //RecyclerView setup (layout manager, use adapter)
         rvTweets.setLayoutManager(new LinearLayoutManager(this));
         rvTweets.setAdapter(tweetAdapter);
@@ -140,13 +148,12 @@ public class TimelineActivity extends AppCompatActivity {
         Log.d("Tweet", String.valueOf(requestCode));
         // check request code and result code first
 
-       if (requestCode==20){
-            // Use data parameter
+
         Tweet tweet = (Tweet) Parcels.unwrap(data.getParcelableExtra(Parcels.class.getSimpleName()));
         tweets.add(0, tweet);
         tweetAdapter.notifyItemInserted(0);
         rvTweets.scrollToPosition(0);
-       }
+
     }
 
     public void fetchTimelineAsync(int page) {

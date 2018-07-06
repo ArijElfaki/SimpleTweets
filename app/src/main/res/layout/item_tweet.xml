@@ -13,7 +13,7 @@
         android:layout_marginLeft="5dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="TextView"
-        android:textSize="18sp" />
+        android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/ivProfileImage"
@@ -30,7 +30,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/tvBody"
         android:text="TextView"
-        android:textSize="12sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tvTimeStamp"
@@ -48,21 +48,21 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/tvUserName"
         android:text="TextView"
-        android:textSize="12sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/retweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_below="@+id/tvBody"
+        android:layout_alignBottom="@+id/ivRetweets"
         android:layout_toEndOf="@+id/ivRetweets"
         android:text="TextView" />
 
     <ImageView
         android:id="@+id/ivRetweets"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
 
 
         android:layout_alignStart="@+id/tvBody"
@@ -80,11 +80,12 @@
 
     <ImageView
         android:id="@+id/ivLikes"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
 
-        android:layout_alignTop="@+id/retweet"
-        android:layout_toEndOf="@+id/retweet"
+        android:layout_marginLeft="60dp"
+        android:layout_below="@+id/tvBody"
+        android:layout_toRightOf="@id/retweet"
         app:srcCompat="@drawable/ic_vector_heart_stroke" />
 
 </RelativeLayout>
