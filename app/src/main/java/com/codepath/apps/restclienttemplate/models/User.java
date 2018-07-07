@@ -31,7 +31,7 @@ public class User {
         user.profileImageUrl= json.getString("profile_image_url");
 
 
-        user.bannerurl=json.getString("profile_banner_url");
+
         user.followerCount=json.getString("followers_count");
         user.followingCount= json.getString("friends_count");
         user.likeCount=json.getString("favourites_count");

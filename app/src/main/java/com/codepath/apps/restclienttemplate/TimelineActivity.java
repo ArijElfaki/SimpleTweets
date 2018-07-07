@@ -68,7 +68,7 @@ public class TimelineActivity extends AppCompatActivity {
             public void onItemClicked(Tweet tweet, Context context) {
                 Intent intent = new Intent(context, DetailsActivity.class);
                 // serialize the movie using parceler, use its short name as a key
-                intent.putExtra("tweet", Parcels.wrap(tweet));
+                intent.putExtra(Tweet.class.getSimpleName(), Parcels.wrap(tweet));
                 startActivityForResult(intent, 20);
             }
         });
@@ -149,7 +149,7 @@ public class TimelineActivity extends AppCompatActivity {
         // check request code and result code first
 
 
-        Tweet tweet = (Tweet) Parcels.unwrap(data.getParcelableExtra(Parcels.class.getSimpleName()));
+        Tweet tweet = (Tweet) Parcels.unwrap(data.getParcelableExtra(Tweet.class.getSimpleName()));
         tweets.add(0, tweet);
         tweetAdapter.notifyItemInserted(0);
         rvTweets.scrollToPosition(0);

@@ -56,7 +56,7 @@ public class ComposeActivity extends AppCompatActivity {
                 try {
                     tweet= Tweet.fromJson(response);
                     Intent i= new Intent(ComposeActivity.this, TimelineActivity.class);
-                    i.putExtra(Parcels.class.getSimpleName(), Parcels.wrap(tweet));
+                    i.putExtra(Tweet.class.getSimpleName(), Parcels.wrap(tweet));
                     setResult(20, i);
                     finish();
                 } catch (JSONException e) {

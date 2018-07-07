@@ -63,7 +63,7 @@ public class DetailsActivity extends AppCompatActivity {
                 try {
                     tweet= Tweet.fromJson(response);
                     Intent i= new Intent(DetailsActivity.this, TimelineActivity.class);
-                    i.putExtra(Parcels.class.getSimpleName(), Parcels.wrap(tweet));
+                    i.putExtra(Tweet.class.getSimpleName(), Parcels.wrap(tweet));
                     setResult(20, i);
                     finish();
                 } catch (JSONException e) {
@@ -78,7 +78,7 @@ public class DetailsActivity extends AppCompatActivity {
             }
         };
 
-        tweet= Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
+        tweet= Parcels.unwrap(getIntent().getParcelableExtra(Tweet.class.getSimpleName()));
 
         body = (TextView)findViewById(R.id.body);
         profileImage = (ImageView)findViewById(R.id.profileImage);
