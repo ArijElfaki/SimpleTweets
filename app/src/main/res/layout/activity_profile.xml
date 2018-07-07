@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <ImageView
+        android:id="@+id/ivBanner"
+        android:layout_width="match_parent"
+        android:layout_height="129dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="39dp"
+        app:srcCompat="@android:color/holo_blue_bright" />
+
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="172dp"
+        android:layout_height="172dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        app:srcCompat="@drawable/ic_vector_person_stroke" />
+
+    <TextView
+        android:id="@+id/twitterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivIcon"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/profileUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/twitterName"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/labelFollowers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/profileUserName"
+        android:text="Follwers Count"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/labelFollowing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/labelFollowers"
+        android:text="Following Count"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/followers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/labelFollowers"
+        android:text="TextView"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/following"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/labelFollowers"
+        android:text="TextView"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/labelLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="137dp"
+        android:text="Likes Count"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/likes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/labelLike"
+        android:layout_marginTop="-137dp"
+        android:text="TextView"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/labelTweets"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/labelLike"
+        android:text="Tweet Count"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/tweets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/labelLike"
+        android:layout_marginTop="-137dp"
+        android:text="TextView"
+        android:textSize="24sp" />
+
+</RelativeLayout>
