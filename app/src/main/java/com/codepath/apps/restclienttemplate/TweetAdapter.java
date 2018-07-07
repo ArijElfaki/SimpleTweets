@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -12,8 +13,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.models.User;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.parceler.Parcels;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -71,6 +75,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         holder.likes.setText(tweet.likes);
         holder.retweets.setText(tweet.retweets);
 
+
         holder.retweetIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +93,17 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
         GlideApp.with(context).load(tweet.user.profileImageUrl).transform(new RoundedCorners(70))
                 .into(holder.ivProfileImage);
+
+
+        holder.ivProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(context, ProfileActivity.class);
+                i.putExtra(User.class.getSimpleName(), Parcels.wrap(mTweets.get(position).user));
+                context.startActivity(i);
+            }
+        });
+
     }
 
     @Override
@@ -126,6 +142,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             retweetIcon= (ImageView)itemView.findViewById(R.id.ivRetweets);
             likeIcon= (ImageView)itemView.findViewById(R.id.ivLikes);
             tvBody.setOnClickListener(this);
+
         }
 
 

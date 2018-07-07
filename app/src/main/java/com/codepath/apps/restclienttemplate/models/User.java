@@ -13,6 +13,11 @@ public class User {
     public String screenName;
     public String profileImageUrl;
 
+    public String bannerurl;
+    public String followerCount;
+    public String followingCount;
+    public String likeCount;
+    public String tweetCount;
 
 
     //deseriazlize the JSON
@@ -24,6 +29,13 @@ public class User {
         user.uid= json.getLong("id");
         user.screenName= json.getString("screen_name");
         user.profileImageUrl= json.getString("profile_image_url");
+
+
+        user.bannerurl=json.getString("profile_banner_url");
+        user.followerCount=json.getString("followers_count");
+        user.followingCount= json.getString("friends_count");
+        user.likeCount=json.getString("favourites_count");
+        user.tweetCount=json.getString("statuses_count");
 
 
         return user;

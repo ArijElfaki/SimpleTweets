@@ -105,12 +105,10 @@ public class DetailsActivity extends AppCompatActivity {
 
     public void retweet(View view){
         client.retweetTweet(tweet.uid, handler);
-        finish();
     }
 
     public void like(View view){
         client.likeTweet(tweet.uid,handler);
-        finish();
     }
 
 
@@ -122,7 +120,6 @@ public class DetailsActivity extends AppCompatActivity {
     public void exitReply(View view) {
         Intent i= new Intent(DetailsActivity.this, TimelineActivity.class);
         startActivity(i);
-
     }
 
 
