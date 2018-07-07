@@ -49,13 +49,14 @@ The following **additional** features are implemented:
 * [X] Profile Information available after clicking an icon
 * [X] Can like and retweet from detail view and timeline
 * [X] Reply is in details page
+* [X] Retweets and like appear as the first tweet after liking/retweet in detail mode
 
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/iJXTyYMHjO.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [RecordIt](http://recordit.co/).
 
